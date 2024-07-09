@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_customer');
+            $table->foreignId('user_id')->references('id')->on('users');
+            // kolom nama_customer dihapus karena sudah ada di tabel users,
+            // begitu juga dengan email
             $table->string('alamat');
             $table->string('nomor_telepon');
-            $table->string('email');
             $table->timestamps();
         });
     }

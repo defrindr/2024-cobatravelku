@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -29,14 +30,14 @@ class RegisterController extends Controller
         DB::listen(function ($query) {
             \Log::info("Query Executed: " . $query->sql, $query->bindings);
         });
-
+        DB::beginTransaction();
         $user = $this->create($request->all());
 
         if ($user === null) {
             \Log::error('User creation failed');
             return redirect()->back()->with('error', 'User creation failed.');
         }
-
+        DB::commit();
         \Log::info('User created', ['user_id' => $user->id]);
 
         // Login user
@@ -48,11 +49,19 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $payload = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:5', 'confirmed'],
-        ]);
+            'role' => ['required', 'string', 'in:customer'],
+        ];
+
+        if (request()->has('role') && request()->get('role') == 'customer') {
+            $payload['alamat'] = 'required';
+            $payload['nomor_telepon'] = 'required';
+        }
+
+        return Validator::make($data, $payload);
     }
 
     protected function create(array $data)
@@ -63,12 +72,20 @@ class RegisterController extends Controller
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'role' => $data['role'],
                 'password' => Hash::make($data['password']),
             ]);
+
+            if ($data['role'] == 'customer') {
+                $data['user_id'] = $user->id;
+                Customer::create($data);
+            }
+
             \Log::info('User created', ['user_id' => $user->id]);
         } catch (\Exception $e) {
             \Log::error('User creation exception', ['exception' => $e->getMessage()]);
             $user = null;  // Set $user to null if creation fails
+            dd($e);
         }
 
         return $user;
