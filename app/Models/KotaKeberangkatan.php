@@ -14,6 +14,6 @@ class KotaKeberangkatan extends Model
     protected $primaryKey = 'id'; // Kolom primary key
 
     protected $fillable = [
-        'id', 'nama_kotaKeberangkatan',
+        'id', 'nama',
     ];
 }

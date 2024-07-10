@@ -18,4 +18,8 @@ class Customer extends Model
         'alamat',
         'nomor_telepon',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

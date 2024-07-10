@@ -9,8 +9,8 @@
     <form action="{{ route('kota_keberangkatan.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="nama_kotaKeberangkatan">Nama Kota Keberangkatan</label>
-            <input type="text" class="form-control" id="nama_kotaKeberangkatan" name="nama_kotaKeberangkatan" required>
+            <label for="nama">Nama Kota Keberangkatan</label>
+            <input type="text" class="form-control" id="nama" name="nama" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>

@@ -22,7 +22,7 @@ class KotaTujuanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kotaTujuan' => 'required',
+            'nama' => 'required',
         ]);
 
         KotaTujuan::create($request->all());
@@ -33,14 +33,14 @@ class KotaTujuanController extends Controller
 
     public function edit(KotaTujuan $kota_tujuan)
     {
-        // $kota_tujuan = KotaTujuan::where('nama_kotaTujuan', $nama_kota_tujuan)->firstOrFail();
+        // $kota_tujuan = KotaTujuan::where('nama', $nama_kota_tujuan)->firstOrFail();
         return view('kota_tujuan.editkotatujuan', compact('kota_tujuan'));
     }
 
     public function update(Request $request, KotaTujuan $kota_tujuan)
     {
         $request->validate([
-            'nama_kotaTujuan' => 'required',
+            'nama' => 'required',
         ]);
 
         $kota_tujuan->update($request->all());
@@ -51,7 +51,7 @@ class KotaTujuanController extends Controller
 
     public function destroy($nama_kota_tujuan)
     {
-        $kota_tujuan = KotaTujuan::where('nama_kotaTujuan', $nama_kota_tujuan)->firstOrFail();
+        $kota_tujuan = KotaTujuan::where('nama', $nama_kota_tujuan)->firstOrFail();
         $kota_tujuan->delete();
 
         return redirect()->route('kota_tujuan.tujuan')

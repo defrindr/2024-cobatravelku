@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('kota_keberangkatan', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kotaKeberangkatan')->nullable();
+            $table->string('nama')->nullable();
             $table->timestamps();
         });
     }

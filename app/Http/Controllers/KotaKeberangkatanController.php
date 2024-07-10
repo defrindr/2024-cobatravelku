@@ -24,7 +24,7 @@ class KotaKeberangkatanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kotaKeberangkatan' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
         ]);
 
         KotaKeberangkatan::create($request->all());
@@ -41,7 +41,7 @@ class KotaKeberangkatanController extends Controller
     public function update(Request $request, KotaKeberangkatan $kotaKeberangkatan)
     {
         $request->validate([
-            'nama_kotaKeberangkatan' => 'required|string|max:255',
+            'nama' => 'required|string|max:255',
         ]);
 
         $kotaKeberangkatan->update($request->all());

@@ -31,7 +31,7 @@
             @foreach($kota_tujuan as $kota)
             <tr>
                 <td>{{ $kota->id }}</td>
-                <td>{{ $kota->nama_kotaTujuan }}</td>
+                <td>{{ $kota->nama }}</td>
                 <td>
                 <a href="{{ route('kota_tujuan.edit', $kota->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('kota_tujuan.destroy', $kota->id) }}" method="POST" style="display:inline;">

@@ -33,64 +33,13 @@
         </ul>
     </li>
     <!-- Pemesanan -->
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
+    <li class="nav-item">
+        <a href="{{ route('pemesanan-admin.index') }}" class="nav-link">
             <i class="nav-icon fas fa-shopping-cart"></i>
             <p>
                 Pemesanan
-                <i class="right fas fa-angle-left"></i>
             </p>
         </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Pemesanan Lunas</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Pemesanan Belum Lunas</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Pemesanan Baru</p>
-                </a>
-            </li>
-        </ul>
-    </li>
-    <!-- Konfirmasi Pemesanan -->
-    <li class="nav-item has-treeview">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-check-circle"></i>
-            <p>
-                Konfirmasi Pemesanan
-                <i class="right fas fa-angle-left"></i>
-            </p>
-        </a>
-        <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Konfirmasi Pesan Lunas</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Konfirmasi Pesan</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Konfirmasi Belum Bayar</p>
-                </a>
-            </li>
-        </ul>
     </li>
     <!-- Jadwal -->
     <li class="nav-item">

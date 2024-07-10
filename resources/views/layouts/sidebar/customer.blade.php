@@ -17,19 +17,19 @@
         </a>
         <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('pemesanan.index', ['status' => 'lunas']) }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pemesanan Lunas</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('pemesanan.index', ['status' => 'pending']) }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pemesanan Belum Lunas</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('pemesanan.create') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Pemesanan Baru</p>
                 </a>
