@@ -18,6 +18,7 @@ class Pengiriman extends Model
         'jumlah_bayar',
         'bukti_bayar',
         'nomor_telepon',
+        'jenis_pembayaran',
         'lokasi_penjemputan',
         'lokasi_pengantaran',
         'status',

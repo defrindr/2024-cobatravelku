@@ -22,6 +22,7 @@ class Pemesanan extends Model
         'lokasi_penjemputan',
         'lokasi_pengantaran',
         'bisa_bayar',
+        'jenis_pembayaran',
         'waktu_mulai_bayar',
         'waktu_selesai_bayar',
         'status',

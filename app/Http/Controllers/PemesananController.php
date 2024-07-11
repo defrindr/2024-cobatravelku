@@ -74,7 +74,8 @@ class PemesananController extends Controller
     {
         $request->validate([
             'jadwal_id' => 'required',
-            'jenis_layanan' => 'required'
+            'jenis_layanan' => 'required',
+            'jenis_pembayaran' => 'required',
         ]);
 
         if ($request->jenis_layanan == 'travel') {
@@ -98,11 +99,20 @@ class PemesananController extends Controller
             $payload = $request->all();
             $payload['status'] = 'pending';
             if ($request->jenis_layanan == 'travel') {
+                if ($jadwal->sisa_kuota <= 0) {
+                    session()->flash('error', 'Kuota habis');
+                    return redirect()->back()->withInput();
+                }
                 $payload['customer_id'] = auth()->user()->customer->id;
                 $payload['ref_code'] = "TRX-" . (random_int(1, 9) * time());
                 $payload['jumlah_bayar'] = $request->jumlah_kursi * $jadwal->harga_travel;
-                if ($jadwal->travels()->count() == 0) {
-                    $payload['bisa_bayar'] = 1;
+                if ($payload['jenis_pembayaran'] == 'tf') {
+                    if ($jadwal->travels()->count() == 0) {
+                        $payload['bisa_bayar'] = 1;
+                    }
+                } else {
+                    $payload['bisa_bayar'] = 0;
+                    $payload['status'] = 'butuh konfirmasi';
                 }
                 $payload['waktu_mulai_bayar'] = date('H:i:s', strtotime($jadwal->estimasiPembayaran));
                 $payload['waktu_selesai_bayar'] = date('H:i:s', strtotime($jadwal->estimasiPembayaran . " + 10 minutes"));
@@ -113,6 +123,8 @@ class PemesananController extends Controller
                 $payload['customer_id'] = auth()->user()->customer->id;
                 $payload['ref_code'] = "TRX-" . (random_int(1, 9) * time());
                 $payload['jumlah_bayar'] = $jadwal->harga_barang;
+                if ($payload['jenis_pembayaran'] == 'cash')
+                    $payload['status'] = 'butuh konfirmasi';
                 $success = Pengiriman::create($payload);
                 DB::commit();
                 return redirect()->route("pemesanan.show-barang", $success);

@@ -40,7 +40,22 @@ class PemesananAdminController extends Controller
 
     public function konfirmasi(Request $request, Pemesanan $pemesanan)
     {
-        $pemesanan->update(['status' => 'lunas']);
+        DB::beginTransaction();
+        try {
+            $pemesanan->update(['status' => 'lunas']);
+            $jadwal = $pemesanan->jadwal;
+
+            $confirmedOrder = $jadwal->travels()->where(['status' => 'lunas'])->count();
+            $sisa = $jadwal->kuota - $confirmedOrder;
+            $jadwal->update(['sisa_kuota' => $sisa]);
+
+            if ($sisa == 0) {
+                $jadwal->travels()->where(['status' => 'pending'])->delete();
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
         return view('pemesanan-admin.show', compact('pemesanan'));
     }
     public function konfirmasiBarang(Request $request, Pengiriman $pemesanan)
