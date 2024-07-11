@@ -18,12 +18,13 @@ return new class extends Migration
             $table->id();
             $table->string('ref_code');
             $table->foreignId('customer_id')->references('id')->on('customer');
-            $table->foreignId('jadwal_id')->nullable()->references('id')->on('jadwal');
+            $table->foreignId('jadwal_id')->nullable()->references('id')->on('jadwal')->onDelete('cascade');
             $table->string('lokasi_penjemputan');
             $table->string('lokasi_pengantaran');
             $table->string('nomor_telepon');
             $table->bigInteger('jumlah_bayar');
             $table->string('bukti_bayar')->nullable();
+            $table->enum('jenis_pembayaran', ['cash', 'tf']);
             $table->enum('status', ['pending', 'butuh konfirmasi', 'lunas']);
             $table->timestamps();
         });

@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/pemesanan/barang/{pemesanan}/bayar', [PemesananController::class, 'bayarBarang'])->name('pemesanan.bayar-barang');
     Route::get('/pemesanan/barang/{pemesanan}', [PemesananController::class, 'showBarang'])->name('pemesanan.show-barang');
     Route::resource('/pemesanan', '\App\Http\Controllers\PemesananController');
+    Route::resource('/jadwal', '\App\Http\Controllers\JadwalController');
 
     Route::get('/beranda', [BerandaController::class, 'index']);
 

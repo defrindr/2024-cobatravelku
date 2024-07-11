@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('ref_code');
             $table->foreignId('customer_id')->references('id')->on('customer');
-            $table->foreignId('jadwal_id')->nullable()->references('id')->on('jadwal');
+            $table->foreignId('jadwal_id')->nullable()->references('id')->on('jadwal')->onDelete('cascade');
             $table->integer('jumlah_kursi')->default(1);
             $table->integer('bisa_bayar')->default(0);
             $table->bigInteger('jumlah_bayar');
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('bukti_bayar')->nullable();
             $table->time('waktu_mulai_bayar');
             $table->time('waktu_selesai_bayar');
+            $table->enum('jenis_pembayaran', ['cash', 'tf']);
             $table->enum('status', ['pending', 'butuh konfirmasi', 'lunas']);
             $table->timestamps();
         });

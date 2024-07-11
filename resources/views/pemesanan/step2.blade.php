@@ -25,8 +25,7 @@
             <div class="card-header">
             </div>
             <div class="card-body">
-                <form action="{{ route('pemesanan.store') }}" method="POST" class="d-inline-block"
-                    onsubmit="return confirm('Yakin ?')">
+                <form action="{{ route('pemesanan.store') }}" method="POST" onsubmit="return confirm('Yakin ?')">
                     @csrf
                     <input type="hidden" name="jadwal_id" value="{{ $jadwal->id }}">
                     <div class="form-group">
@@ -85,6 +84,16 @@
                                     <span class="text-xs">* Link gmap</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jenis_pembayaran">Jenis Pembayaran</label>
+                            <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control">
+                                <option value="">-- Pilih Pembayaran --</option>
+                                <option @if (request()->get('jenis_pembayaran') == 'tf') selected @endif value="tf">Transfer
+                                </option>
+                                <option @if (request()->get('jenis_pembayaran') == 'cash') selected @endif value="cash">Cash</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
