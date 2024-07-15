@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Kota Tujuan')
+@section('title', 'Admin')
 
 @section('content')
     <div class="container-fluid pt-4">
@@ -77,8 +77,7 @@
                             Pengiriman
                         </h4>
                         <form action="" class="form">
-                            <input type="hidden" name="status_pemesanan"
-                                value="{{ request()->get('status_pemesanan') }}">
+                            <input type="hidden" name="status_pemesanan" value="{{ request()->get('status_pemesanan') }}">
                             <select name="status_pengiriman" id="" class="form-control  d-inline-block"
                                 style="width: 80%">
                                 <option value="">-- Pilih --</option>

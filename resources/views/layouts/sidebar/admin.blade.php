@@ -51,21 +51,35 @@
         </a>
     </li>
     <!-- Kendaraan -->
-    <li class="nav-item {{ Request::is('mitra*') ? 'menu-open' : '' }}">
-        <a href="{{ route('mitra.index') }}" class="nav-link {{ Request::is('mitra*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bus"></i>
-            <p>Kendaraan</p>
-        </a>
-    </li>
-    <!-- Keluhan Pelanggan -->
-    <li class="nav-item">
+    <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-comments"></i>
+            <i class="nav-icon fas fa-city"></i>
             <p>
-                Keluhan Pelanggan
+                Kendaraan
+                <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+        <ul class="nav nav-treeview">
+        <li class="nav-item">
+        <a href="#" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>
+                Kendaraan 
             </p>
         </a>
     </li>
+
+    <li class="nav-item">
+        <a href="{{ route('mitra.index') }}" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>
+                Kendaraan Mitra
+            </p>
+        </a>
+    </li>
+        </ul>
+    </li>
+ 
     <!-- Laporan -->
     <li class="nav-item">
         <a href="#" class="nav-link">
@@ -75,15 +89,7 @@
             </p>
         </a>
     </li>
-    <!-- Pengguna -->
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-                Pengguna
-            </p>
-        </a>
-    </li>
+
     <!-- Logout -->
     <li class="nav-item">
         <a href="{{ route('logout') }}" class="nav-link">

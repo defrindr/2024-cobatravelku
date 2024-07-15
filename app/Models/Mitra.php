@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Mitra extends Model
 {
     use HasFactory;
-    protected $table = 'mitra'; // Sesuaikan dengan nama tabel di database
 
-    protected $primaryKey = 'id'; // Kolom primary key
-
+    protected $table = 'mitra';
+    
     protected $fillable = [
         'id',
-        'nama',
+        'user_id',
         'alamat',
-        'email',
         'no_telepon',
         'nomor_polisi',
         'jenis_mobil',
+        'harga_sewa',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

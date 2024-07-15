@@ -9,6 +9,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KotaKeberangkatanController;
 use App\Http\Controllers\KotaTujuanController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\PemilikController;
 use App\Http\Controllers\PemesananAdminController;
 use App\Http\Controllers\PemesananController;
 use Illuminate\Support\Facades\Route;

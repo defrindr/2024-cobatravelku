@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="{{ asset('img/logo.png') }}" alt="Admin Lentera" class="brand-image img-circle elevation-3"
+        <img src="{{ asset('img/logo.png') }}" alt="Lentera Jaya Travel" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin Lentera</span>
+        <span class="brand-text font-weight-light">Lentera Jaya Travel</span>
     </a>
 
     <!-- Sidebar -->
@@ -11,7 +11,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">Lentera Jaya Team</a>
+                <a href="#" class="d-block">Lentera Jaya</a>
             </div>
         </div>
 
@@ -34,6 +34,10 @@
                 @include('layouts.sidebar.customer')
             @elseif(auth()->user()->role == \App\Models\User::ROLE_ADMINISTRATOR)
                 @include('layouts.sidebar.admin')
+                @elseif(auth()->user()->role == \App\Models\User::ROLE_MITRA)
+                @include('layouts.sidebar.mitra')
+                @elseif(auth()->user()->role == \App\Models\User::ROLE_PEMILIK)
+                @include('layouts.sidebar.pemilik')
             @else
                 @include('layouts.sidebar.blank')
             @endif

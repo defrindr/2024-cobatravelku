@@ -13,6 +13,9 @@ class User extends Authenticatable
 
     const ROLE_ADMINISTRATOR = 'admin';
     const ROLE_CUSTOMER = 'customer';
+    const ROLE_MITRA = 'mitra';
+    const ROLE_PEMILIK = 'pemilik';
+
 
     protected $fillable = [
         'name',
@@ -32,5 +35,10 @@ class User extends Authenticatable
     public function customer()
     {
         return $this->hasOne(Customer::class);
+    }
+
+    public function mitra()
+    {
+        return $this->hasOne(Mitra::class);
     }
 }

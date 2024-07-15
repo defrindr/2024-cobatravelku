@@ -28,29 +28,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="row">
                     <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-blue">
-                            <div class="inner">
-                                <h3></h3>
-                                <p>Pemesanan Tiket Baru</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="index.php" class="small-box-footer">More info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 col-xs-6">
-                        <!-- small box -->
                         <div class="small-box bg-maroon">
                             <div class="inner">
-                                <p>Konfirmasi Pemesanan Baru</p>
+                                <p>Konfirmasi Pemesanan</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
                             </div>
-                            <a href="index.php" class="small-box-footer">More info <i
+                            <a href="{{ route('pemesanan-admin.index') }}" class="small-box-footer">More info <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -66,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
                             </div>
-                            <a href="index.php" class="small-box-footer">More info <i
+                            <a href="{{ route('mitra.index') }}" class="small-box-footer">More info <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
@@ -94,7 +79,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="index.php" class="small-box-footer">More info <i
+                            <a href="{{ route('jadwal.index') }}" class="small-box-footer">More info <i
                                     class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>

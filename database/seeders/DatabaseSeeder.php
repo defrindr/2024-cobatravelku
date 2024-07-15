@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             KotaSeeder::class,
             JadwalSeeder::class,
             PemesananSeeder::class,
+            MitraSeeder::class,
+            PemilikSeeder::class,
         ]);
     }
 }

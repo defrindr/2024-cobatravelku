@@ -108,15 +108,7 @@
             <p>Kendaraan</p>
         </a>
     </li>
-    <!-- Keluhan Pelanggan -->
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-comments"></i>
-            <p>
-                Keluhan Pelanggan
-            </p>
-        </a>
-    </li>
+
     <!-- Laporan -->
     <li class="nav-item">
         <a href="#" class="nav-link">
@@ -126,15 +118,7 @@
             </p>
         </a>
     </li>
-    <!-- Pengguna -->
-    <li class="nav-item">
-        <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-                Pengguna
-            </p>
-        </a>
-    </li>
+
     <!-- Logout -->
     <li class="nav-item">
         <a href="{{ route('logout') }}" class="nav-link">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Kota Tujuan')
+@section('title', 'Admin')
 
 @section('content')
     <div class="container-fluid pt-4">
