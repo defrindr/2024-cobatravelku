@@ -13,6 +13,7 @@ class Jadwal extends Model
 
 
     protected $fillable = [
+        'id_mitra',
         'nomor_polisi',
         'jenis_mobil',
         'kuota',
@@ -38,6 +39,12 @@ class Jadwal extends Model
     public function travels()
     {
         return $this->hasMany(Pemesanan::class);
+    }
+
+
+    public function mitra()
+    {
+        return $this->belongsTo(Mitra::class);
     }
 
     public function getEstimasiPembayaranAttribute()

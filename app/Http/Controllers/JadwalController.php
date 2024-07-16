@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Models\KotaKeberangkatan;
 use App\Models\KotaTujuan;
+use App\Models\Mitra;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,12 +25,14 @@ class JadwalController extends Controller
   {
     $kotaTujuans = KotaTujuan::all();
     $kotaKeberangkatans = KotaKeberangkatan::all();
-    return view('jadwal.create', compact('kotaTujuans', 'kotaKeberangkatans'));
+    $mitras = Mitra::all();
+    return view('jadwal.create', compact('kotaTujuans', 'kotaKeberangkatans', 'mitras'));
   }
 
   public function store(Request $request)
   {
     $request->validate([
+      'id_mitra' => 'required',
       'nomor_polisi' => 'required',
       'jenis_mobil' => 'required',
       'kuota' => 'required',
@@ -63,6 +66,7 @@ class JadwalController extends Controller
   public function update(Request $request, Jadwal $jadwal)
   {
     $request->validate([
+      'id_mitra' => 'required',
       'nomor_polisi' => 'required',
       'jenis_mobil' => 'required',
       // 'kuota' => 'required',

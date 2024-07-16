@@ -20,9 +20,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CustomerSeeder::class,
             KotaSeeder::class,
+            MitraSeeder::class,
             JadwalSeeder::class,
             PemesananSeeder::class,
-            MitraSeeder::class,
             PemilikSeeder::class,
         ]);
     }

@@ -24,9 +24,10 @@ class MitraSeeder extends Seeder
         ]);
 
         Mitra::create([
+            'id' => 1,
             'user_id' => $user->id,
             'alamat' => 'Wajak',
-            'nomor_telepon' => '08121212345',
+            'no_telepon' => '08121212345',
             'nomor_polisi' => 'N 2853 L',
             'jenis_mobil' => 'Grandmax',
             'harga_sewa' => '200000',
@@ -43,7 +44,7 @@ class MitraSeeder extends Seeder
         Mitra::create([
             'user_id' => $user->id,
             'alamat' => 'Batu',
-            'nomor_telepon' => '0876545678',
+            'no_telepon' => '0876545678',
             'nomor_polisi' => 'N 156 Y',
             'jenis_mobil' => 'Avanza',
             'harga_sewa' => '200000',

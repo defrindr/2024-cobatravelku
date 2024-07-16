@@ -17,7 +17,8 @@ class MitraController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('mitra.create', compact('users'));
+        $mitras = User::where('role', 'mitra')->get();
+        return view('mitra.create', compact('users', 'mitras'));
     }
 
     public function store(Request $request)

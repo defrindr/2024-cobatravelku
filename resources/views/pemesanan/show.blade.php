@@ -54,7 +54,7 @@
                             <td>Status</td>
                             <td>: {{ $pemesanan->status }}</td>
                         </tr>
-                        @if ($pemesanan->bisa_bayar)
+                        @if ($pemesanan->bisa_bayar & $pemesanan->created_by == auth()->user()->id)
                             <tr>
                                 <td>No Rekening Pembayaran</td>
                                 <td>

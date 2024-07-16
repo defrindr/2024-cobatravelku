@@ -195,7 +195,11 @@ class PemesananController extends Controller
 
     public function index(Request $request, $status = null)
     {
-        $query = Pemesanan::query()->where('customer_id', '=', auth()->user()->customer->id);
+
+        $query = Pemesanan::query();
+        if (auth()->user()->role == "customer") {
+            $query->where('customer_id', '=', auth()->user()->customer->id);
+        }
         $status = $request->get('status');
         if ($status) {
             if ($status == "pending")
@@ -205,7 +209,11 @@ class PemesananController extends Controller
         }
         $pemesanan = $query->get();
 
-        $query = Pengiriman::query()->where('customer_id', '=', auth()->user()->customer->id);
+
+        $query = Pengiriman::query();
+        if (auth()->user()->role == "customer") {
+            $query->where('customer_id', '=', auth()->user()->customer->id);
+        }
         if ($status) {
             if ($status == "pending")
                 $query->whereStatus($status);

@@ -16,6 +16,7 @@ class JadwalSeeder extends Seeder
     public function run()
     {
         Jadwal::create([
+            'id_mitra' => 1,
             'nomor_polisi' => 'B 063 L',
             'jenis_mobil' => 'Avanza',
             'kuota' => 1,
@@ -28,6 +29,7 @@ class JadwalSeeder extends Seeder
             'kota_tujuan_id' => 1,
         ]);
         Jadwal::create([
+            'id_mitra' => 1,
             'nomor_polisi' => 'K 374 N',
             'jenis_mobil' => 'Kijang',
             'kuota' => 1,

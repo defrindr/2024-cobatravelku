@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_mitra')->references('id')->on('mitra');
             $table->string('nomor_polisi');
             $table->string('jenis_mobil');
             $table->integer('kuota');
