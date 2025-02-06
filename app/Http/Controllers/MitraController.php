@@ -10,7 +10,13 @@ class MitraController extends Controller
 {
     public function index()
     {
-        $mitra = Mitra::with('user')->get();
+        $currentUser = auth()->user();
+        $query = Mitra::with('user');
+
+        if ($currentUser->role == "mitra") {
+            $query->where('user_id', $currentUser->id);
+        }
+        $mitra = $query->get();
         return view('mitra.index', compact('mitra'));
     }
 

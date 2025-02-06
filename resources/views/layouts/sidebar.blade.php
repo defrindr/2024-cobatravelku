@@ -34,9 +34,9 @@
                 @include('layouts.sidebar.customer')
             @elseif(auth()->user()->role == \App\Models\User::ROLE_ADMINISTRATOR)
                 @include('layouts.sidebar.admin')
-                @elseif(auth()->user()->role == \App\Models\User::ROLE_MITRA)
+            @elseif(auth()->user()->role == \App\Models\User::ROLE_MITRA)
                 @include('layouts.sidebar.mitra')
-                @elseif(auth()->user()->role == \App\Models\User::ROLE_PEMILIK)
+            @elseif(auth()->user()->role == \App\Models\User::ROLE_PEMILIK)
                 @include('layouts.sidebar.pemilik')
             @else
                 @include('layouts.sidebar.blank')

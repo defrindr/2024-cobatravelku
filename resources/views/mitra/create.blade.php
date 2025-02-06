@@ -7,7 +7,7 @@
         <h1>Tambah Kendaraan Mitra</h1>
         <form action="{{ route('mitra.store') }}" method="POST">
             @csrf
-            @if (auth()->user()->role == 'pemilik')
+            @if (auth()->user()->role == 'pemilik' || auth()->user()->role == 'admin' )
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <select name="user_id" id="user_id" class="form-control">

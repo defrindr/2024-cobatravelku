@@ -17,13 +17,13 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="id_mitra">Mitra</label>
+                                        <label for="id_mitra">Mobil Mitra</label>
                                         <select name="id_mitra" id="id_mitra" class="form-control" required>
-                                            <option value="">-- Pilih Kota --</option>
+                                            <option value="">-- Pilih Mobil --</option>
                                             @foreach ($mitras as $item)
                                                 <option @if ($item->id == old('id_mitra')) selected @endif
                                                     value="{{ $item->id }}">
-                                                    {{ $item->user->name . ' | ' . $item->jenis_mobil }}
+                                                    {{ $item->jenis_mobil . ' | ' . $item->user->name }}
                                                 </option>
                                             @endforeach
                                         </select>

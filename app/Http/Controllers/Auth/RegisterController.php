@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Pemilik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:5', 'confirmed'],
-            'role' => ['required', 'string', 'in:customer'],
+            'role' => ['required', 'string', 'in:customer,pemilik,mitra'],
         ];
 
         if (request()->has('role') && request()->get('role') == 'customer') {
@@ -67,7 +68,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         \Log::info('Creating user with data', $data);
-
+        // dd($data);
         try {
             $user = User::create([
                 'name' => $data['name'],
@@ -79,6 +80,11 @@ class RegisterController extends Controller
             if ($data['role'] == 'customer') {
                 $data['user_id'] = $user->id;
                 Customer::create($data);
+            } else if ($data['role'] == 'mitra') {
+                $data['user_id'] = $user->id;
+            } else if ($data['role'] == 'pemilik') {
+                $data['user_id'] = $user->id;
+                Pemilik::create($data);
             }
 
             \Log::info('User created', ['user_id' => $user->id]);

@@ -39,6 +39,12 @@
                     {{ session('error') }}
                 </div>
             @endif
+            <!-- Display error message -->
+            @if (session('errors'))
+                <div class="text-red-500 mb-4">
+                    {{ session('errors') }}
+                </div>
+            @endif
 
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -75,6 +81,8 @@
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                         <option value="">-- Select Role --</option>
                         <option value="customer">Customer / Pelanggan</option>
+                        <option value="mitra">Mitra</option>
+                        <option value="pemilik">Pemilik</option>
                     </select>
                 </div>
 
@@ -110,7 +118,7 @@
 <script>
     const aturItemTambahan = () => {
         let val = document.querySelector('#role').value;
-        if (val === 'customer') {
+        if (val === 'customer'||val === 'pemilik') {
             document.querySelector('#customer_container').setAttribute('style', 'display: block');
         } else {
             document.querySelector('#customer_container').setAttribute('style', 'display: none');

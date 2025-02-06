@@ -35,6 +35,10 @@ Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
+//register
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/pemesanan-admin', [PemesananAdminController::class, 'index'])->name('pemesanan-admin.index');
     Route::get('/pemesanan-admin/{pemesanan}', [PemesananAdminController::class, 'show'])->name('pemesanan-admin.show');
@@ -49,13 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/jadwal', '\App\Http\Controllers\JadwalController');
 
     Route::get('/beranda', [BerandaController::class, 'index']);
-
-
-    //register
-    Route::middleware(['web'])->group(function () {
-        Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-        Route::post('register', [RegisterController::class, 'register']);
-    });
 
     //home dasboard
     // Route::get('/home/beranda', [BerandaController::class, 'beranda'])->name('home.beranda');
